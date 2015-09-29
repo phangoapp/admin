@@ -1,0 +1,12 @@
+{
+    "name": "phangoapp/admin",
+    "description": "Basic module for create admin sites",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Antonio de la Rosa",
+            "email": "webmaster@web-t-sys.com"
+        }
+    ],
+    "minimum-stability": "dev-master"    
+}
