@@ -8,7 +8,7 @@ use PhangoApp\PhaLibs\SimpleList;
 use PhangoApp\PhaUtils\Utils;
 use PhangoApp\PhaLibs\HierarchyLinks;
 
-Webmodel::load_model('modules/admin/models/models_admin');
+Webmodel::load_model('vendor/phangoapp/admin/models/models_admin');
 I18n::load_lang('users');
 
 function AusersAdmin()

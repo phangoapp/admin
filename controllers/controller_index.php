@@ -74,7 +74,7 @@ class indexController extends Controller {
 
 			$module_admin=array();
 
-			$arr_admin_script['none']=array('admin', 'admin');
+			$arr_admin_script['none']=array('phangoapp/admin', 'admin');
 			
 			//Define $module_admin[$module_id] for check if exists in database the module
 
@@ -133,7 +133,7 @@ class indexController extends Controller {
 			
 			}
 			
-			$file_include=Routes::$base_path.'/modules/'.$arr_admin_script[ $module_id ][0].'/controllers/admin/admin_'.$arr_admin_script[ $module_id ][1].'.php';
+			$file_include=Routes::$base_path.'/vendor/'.$arr_admin_script[ $module_id ][0].'/controllers/admin/admin_'.$arr_admin_script[ $module_id ][1].'.php';
 			
 			if(AdminSwitchClass::$login->session['privileges_user']==1)
 			{
