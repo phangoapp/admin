@@ -8,7 +8,7 @@ use PhangoApp\PhaI18n\I18n;
 use PhangoApp\PhaUtils\Utils;
 use PhangoApp\PhaLibs\LoginClass;
 
-Webmodel::load_model('modules/admin/models/models_admin');
+Webmodel::load_model('vendor/phangoapp/admin/models/models_admin');
 
 class LoginController extends Controller {
 
