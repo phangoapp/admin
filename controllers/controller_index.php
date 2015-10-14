@@ -55,8 +55,8 @@ class indexController extends Controller {
 		
 		if(AdminSwitchClass::$login->check_login())
 		{
-		
-			LoginClass::$session['token_client']=sha1(LoginClass::$session['token_client']);
+            
+			LoginClass::$session['user_admin']['token_client']=sha1(LoginClass::$session['user_admin']['token_client']);
 			
 			//variables for define titles for admin page
 
@@ -135,7 +135,7 @@ class indexController extends Controller {
 			
 			$file_include=Routes::$base_path.'/vendor/'.$arr_admin_script[ $module_id ][0].'/controllers/admin/admin_'.$arr_admin_script[ $module_id ][1].'.php';
 			
-			if(LoginClass::$session['privileges_user']==1)
+			if(LoginClass::$session['user_admin']['privileges_user']==1)
 			{
 			
 				$arr_permissions_admin=array();
