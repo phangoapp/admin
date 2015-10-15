@@ -8,10 +8,6 @@ I18n::$lang['admin']['welcome_text']='Desde aquí podrá manejar su website';
 
 I18n::$lang['admin']['add_moderator_to_module']='Añadir moderador a módulo';
 
-I18n::$lang['admin']['module_moderated']='Module moderated';
-
-I18n::$lang['admin']['moderators']='Moderators';
-
 I18n::$lang['admin']['moderator']='Moderador';
 
 I18n::$lang['admin']['go_back_home']='Ir a home';
