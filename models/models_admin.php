@@ -15,7 +15,7 @@ use PhangoApp\PhaModels\CoreFields\ForeignKeyField;
 use PhangoApp\PhaModels\ExtraModels\UserPhangoModel;
 use PhangoApp\PhaI18n\I18n;
 
-I18n::load_lang('admin');
+I18n::load_lang('phangoapp/admin');
 
 class ChoiceAdminField extends ChoiceField {
 

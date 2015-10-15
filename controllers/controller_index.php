@@ -14,9 +14,9 @@ use PhangoApp\PhaLibs\LoginClass;
 use PhangoApp\PhaRouter\Routes;
 use PhangoApp\PhaView\View;
 
+I18n::load_lang('phangoapp/admin');
 Webmodel::load_model('vendor/phangoapp/admin/models/models_admin');
 Utils::load_config('config_admin', 'settings/admin');
-I18n::load_lang('admin');
 
 #Utils::load_libraries('loginclass');
 #Utils::load_libraries(array('utilities/set_admin_link'));

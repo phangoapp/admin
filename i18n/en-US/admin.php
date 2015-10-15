@@ -8,6 +8,10 @@ I18n::$lang['admin']['welcome_text']='Welcome text';
 
 I18n::$lang['admin']['add_moderator_to_module']='Add moderator to module';
 
+I18n::$lang['admin']['module_moderated']='Module moderated';
+
+I18n::$lang['admin']['moderators']='Moderators';
+
 I18n::$lang['admin']['moderator']='Moderator';
 
 I18n::$lang['admin']['go_back_home']='go back to home';
