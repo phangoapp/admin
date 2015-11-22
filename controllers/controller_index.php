@@ -60,6 +60,8 @@ class indexController extends Controller {
 			
 			//variables for define titles for admin page
 
+			$arr_son_module=array();
+			
 			$title_admin=I18n::lang('admin', 'admin', 'Admin');
 			$title_module=I18n::lang('admin', 'home', 'Home');
 			
@@ -84,52 +86,90 @@ class indexController extends Controller {
 			
 			foreach(ModuleAdmin::$arr_modules_admin as $idmodule => $ser_admin_script)
 			{	
-				$name_module=$idmodule;
-				
-				$arr_admin_script[$idmodule]=$ser_admin_script;
 				
 				//load little file lang with the name for admin. With this you don't need bloated with biggest files of langs...
-
+				
+				$name_module=$idmodule;
+				
 				$dir_lang_admin=$name_module.'/';
-
-				if($arr_admin_script[$idmodule][0]!=$arr_admin_script[$idmodule][1])
-				{
-
-					$dir_lang_admin=$arr_admin_script[$idmodule][0].'/';
-
-				}
-
+				
 				I18n::load_lang($dir_lang_admin.$name_module.'_admin');
+                    
+                if(!isset(I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']))
+                {
+
+                    $name_modules[$name_module]=ucfirst($name_module);
+                    I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']=ucfirst($name_modules[$name_module]);
+                
+                }
+                else
+                {
+                    
+                    $name_modules[$name_module]=ucfirst(I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']);
+
+                }
 				
-				if(!isset(I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']))
+				if(gettype(current($ser_admin_script))=='string')
 				{
+                    
+                    $arr_admin_script[$idmodule]=$ser_admin_script;                   
 
-					$name_modules[$name_module]=ucfirst($name_module);
-					I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']=ucfirst($name_modules[$name_module]);
-				
-				}
-				else
-				{
-					
-					$name_modules[$name_module]=ucfirst(I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']);
+                    if($arr_admin_script[$idmodule][0]!=$arr_admin_script[$idmodule][1])
+                    {
 
-				}
+                        $dir_lang_admin=$arr_admin_script[$idmodule][0].'/';
 
-				$urls[$name_module]=AdminUtils::set_admin_link($idmodule, array()); //(PhangoVar::$base_url, 'admin', 'index', $name_module, array('IdModule' => $idmodule));
+                    }
 
-				$module_admin[$idmodule]=$name_module;
-				
-				$arr_permissions_admin[$idmodule]=1;
+                    $urls[$name_module]=AdminUtils::set_admin_link($idmodule, array()); //(PhangoVar::$base_url, 'admin', 'index', $name_module, array('IdModule' => $idmodule));
+
+                    $module_admin[$idmodule]=$name_module;
+                    
+                    $arr_permissions_admin[$idmodule]=1;
+			
+                }
+                else
+                {
+                    
+                    
+                    foreach($ser_admin_script as $idmodule_son => $ser_admin_script_son)
+                    {
+                    
+                        $name_module_son=$idmodule_son;
+                    
+                        if(!isset(I18n::$lang[$name_module_son.'_admin'][$name_module_son.'_admin_name']))
+                        {
+
+                            I18n::$lang[$name_module_son.'_admin'][$name_module_son.'_admin_name']=ucfirst($name_module_son);
+                        
+                        }
+                        
+                        $arr_son_module['extra_url'][$idmodule]['name_module'][]=I18n::$lang[$name_module_son.'_admin'][$name_module_son.'_admin_name'];
+                        
+                        $arr_son_module['extra_url'][$idmodule]['url_module'][]=AdminUtils::set_admin_link($name_module_son, array());
+                    
+                        $arr_admin_script[$idmodule_son]=$ser_admin_script_son;
+                        $module_admin[$idmodule_son]=$name_module_son;
+                        $arr_permissions_admin[$idmodule_son]=1;
+                        
+                        //$module_admin[$module_id]!='' && $arr_permissions_admin[$module_id]==1)
+                    
+                    }
+                    
+                                       
+                    //foreach($ser_admin_script as 
+                
+                }
 			
 			}
 
-			
 			if(!isset($arr_admin_script[ $module_id ]))
 			{
 			
 				//Need show error.
-			
-				die;
+                $this->route->response404();
+            
+                die;
 			
 			}
 			
@@ -184,7 +224,11 @@ class indexController extends Controller {
 					echo '<h1>'.I18n::$lang[$module_admin[$module_id].'_admin'][$module_admin[$module_id].'_admin_name'].'</h1>';
 
 					$extra_data=$func_admin();
-
+					
+					settype($extra_data, 'array');
+					
+					$extra_data=array_merge($extra_data, $arr_son_module);
+					
 				}
 				else
 				{
@@ -209,6 +253,8 @@ class indexController extends Controller {
 			}
 			else
 			{
+                
+                $this->route->response404();
 			
 				die;
 			
@@ -229,9 +275,51 @@ class indexController extends Controller {
 			die( header('Location: '.$url, true ) );
 			
 		}
-	
+        
 	}
 	
+}
+
+function get_admin_modules($arr_admin_script, $name_modules, $urls, $module_admin, $arr_permissions_admin)
+{
+
+    $arr_admin_script[$idmodule]=$ser_admin_script;
+                
+    $name_module=$idmodule;
+
+    $dir_lang_admin=$name_module.'/';
+
+    if($arr_admin_script[$idmodule][0]!=$arr_admin_script[$idmodule][1])
+    {
+
+        $dir_lang_admin=$arr_admin_script[$idmodule][0].'/';
+
+    }
+
+    I18n::load_lang($dir_lang_admin.$name_module.'_admin');
+    
+    if(!isset(I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']))
+    {
+
+        $name_modules[$name_module]=ucfirst($name_module);
+        I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']=ucfirst($name_modules[$name_module]);
+    
+    }
+    else
+    {
+        
+        $name_modules[$name_module]=ucfirst(I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']);
+
+    }
+
+    $urls[$name_module]=AdminUtils::set_admin_link($idmodule, array()); //(PhangoVar::$base_url, 'admin', 'index', $name_module, array('IdModule' => $idmodule));
+
+    $module_admin[$idmodule]=$name_module;
+    
+    $arr_permissions_admin[$idmodule]=1;
+    
+    return [$arr_admin_script, $name_modules, $urls, $module_admin, $arr_permissions_admin];
+
 }
 
 ?>

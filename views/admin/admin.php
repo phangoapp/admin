@@ -60,9 +60,20 @@ function AdminView($header, $title, $content, $name_modules, $url_modules, $extr
 
 					foreach($name_modules as $key_module => $name_module)
 					{
+                        if(isset($url_modules[$key_module]))
+                        {
+					
 						?>
 						<a href="<?php echo $url_modules[$key_module]; ?>"><?php echo $name_module; ?></a>
 						<?php
+						
+						}
+						else
+						{
+						
+                            echo '<div class="title_admin">'.$name_module.'</div>'; 
+						
+						}
 						
 						//If have $key_module with an extra_url element from extra_data, put here.
 						
