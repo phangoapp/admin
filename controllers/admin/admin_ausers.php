@@ -16,7 +16,7 @@ function AusersAdmin()
 
 	settype($_GET['op'], 'integer');
 	
-	Webmodel::$model['user_admin']->label=I18n::$lang['ausers_admin']['ausers_admin_name'];
+	Webmodel::$model['user_admin']->label=I18n::lang('users', 'users_admin', 'User\'s admin');
 	Webmodel::$model['user_admin']->components['user_admin']->label=I18n::lang('users', 'username', 'Username');
 	Webmodel::$model['user_admin']->components['privileges_user']->label=I18n::lang('users', 'privileges_user', 'Privileges');
 	

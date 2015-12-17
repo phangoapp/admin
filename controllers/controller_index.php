@@ -82,19 +82,67 @@ class indexController extends Controller {
 
 			$module_admin[$module_id]='AdminIndex';
 			
-			I18n::$lang[$module_admin[$module_id].'_admin']['AdminIndex_admin_name']=ucfirst(I18n::lang('admin', 'admin', 'Admin'));
+			//I18n::$lang[$module_admin[$module_id].'_admin']['AdminIndex_admin_name']=ucfirst(I18n::lang('admin', 'admin', 'Admin'));
+			
+			$title_admin=I18n::lang('admin', 'admin', 'Admin');
 			
 			foreach(ModuleAdmin::$arr_modules_admin as $idmodule => $ser_admin_script)
 			{	
 				
 				//load little file lang with the name for admin. With this you don't need bloated with biggest files of langs...
+
+				/*
+				ModuleAdmin::$arr_modules_admin=[array('ausers' => array('phangoapp/admin', 'ausers')), 'AUsers'];
+                ModuleAdmin::$arr_modules_admin['server_config']=['example1' => array('example/example', 'example1', 'examplete1'), 'example2' => array('example/example', 'example2', 'examplete2')]
+				*/
 				
 				$name_module=$idmodule;
 				
+				if(gettype(current($ser_admin_script))=='string')
+                {
+                
+                    $name_modules[$name_module]=$ser_admin_script[2];
+
+                    $arr_admin_script[$idmodule]=$ser_admin_script;    
+                    
+                    $urls[$name_module]=AdminUtils::set_admin_link($idmodule, array());
+
+                    $module_admin[$idmodule]=$name_module;
+                    
+                    $arr_permissions_admin[$idmodule]=1;
+				
+				}
+				else
+				{
+				
+                    $name_modules[$name_module]=$ser_admin_script['title'];
+				
+                    unset(ModuleAdmin::$arr_modules_admin[$idmodule]['title']);
+				
+                    foreach(ModuleAdmin::$arr_modules_admin[$idmodule] as $idmodule_son => $ser_admin_script_son)
+                    {
+                    
+                        $name_module_son=$idmodule_son;
+				
+                        $name_modules[$name_module_son]=$ser_admin_script_son[2];
+
+                        $arr_admin_script[$idmodule_son]=$ser_admin_script_son;    
+                        
+                        $urls[$name_module_son]=AdminUtils::set_admin_link($idmodule_son, array());
+
+                        $module_admin[$idmodule_son]=$name_module_son;
+                        
+                        $arr_permissions_admin[$idmodule_son]=1;
+				
+                    }
+				
+				}
+				
+				/*
 				$dir_lang_admin=$name_module.'/';
 				
 				I18n::load_lang($dir_lang_admin.$name_module.'_admin');
-                    
+                
                 if(!isset(I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']))
                 {
 
@@ -107,7 +155,9 @@ class indexController extends Controller {
                     
                     $name_modules[$name_module]=ucfirst(I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']);
 
-                }
+                }*/
+                /*
+                $name_modules[$name_module]=$ser_admin_script[2];
 				
 				if(gettype(current($ser_admin_script))=='string')
 				{
@@ -136,15 +186,8 @@ class indexController extends Controller {
                     {
                     
                         $name_module_son=$idmodule_son;
-                    
-                        if(!isset(I18n::$lang[$name_module_son.'_admin'][$name_module_son.'_admin_name']))
-                        {
-
-                            I18n::$lang[$name_module_son.'_admin'][$name_module_son.'_admin_name']=ucfirst($name_module_son);
                         
-                        }
-                        
-                        $arr_son_module['extra_url'][$idmodule]['name_module'][]=I18n::$lang[$name_module_son.'_admin'][$name_module_son.'_admin_name'];
+                        $arr_son_module['extra_url'][$idmodule]['name_module'][]=$ser_admin_script_son[2];
                         
                         $arr_son_module['extra_url'][$idmodule]['url_module'][]=AdminUtils::set_admin_link($name_module_son, array());
                     
@@ -159,7 +202,7 @@ class indexController extends Controller {
                                        
                     //foreach($ser_admin_script as 
                 
-                }
+                }*/
 			
 			}
 
@@ -221,8 +264,12 @@ class indexController extends Controller {
 				if(function_exists($func_admin))
 				{	
 
-					echo '<h1>'.I18n::$lang[$module_admin[$module_id].'_admin'][$module_admin[$module_id].'_admin_name'].'</h1>';
-
+					//echo '<h1>'.I18n::$lang[$module_admin[$module_id].'_admin'][$module_admin[$module_id].'_admin_name'].'</h1>';
+                    
+                    $title_admin=$name_modules[$module_id];
+                    
+                    echo '<h1>'.$title_admin.'</h1>';
+                    
 					$extra_data=$func_admin();
 					
 					settype($extra_data, 'array');
