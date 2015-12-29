@@ -29,7 +29,7 @@ function LoginFormView($model_user, $model_login)
 
 	?>
 	<p><a href="<?php echo $model_login->url_recovery; ?>"><?php echo I18n::lang('users', 'remember_password', 'Remember password'); ?></a></p>
-	<p><input type="submit" value="<?php echo I18n::lang('common', 'login', 'Login'); ?>" /></p>
+	<p><input type="submit" class="submit" value="<?php echo I18n::lang('common', 'login', 'Login'); ?>" /></p>
 	</form>
 	<?php
 

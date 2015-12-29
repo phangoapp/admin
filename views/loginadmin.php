@@ -12,6 +12,7 @@ function LoginAdminView($content)
 	<head>
 	<title><?php echo I18n::lang('users', 'login', 'Login'); ?></title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<?php 
 		View::$css_module['admin'][]='login.css';
 	

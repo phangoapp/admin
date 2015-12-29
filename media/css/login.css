@@ -2,8 +2,9 @@ body
 {
 	
 	background: #f4f9ff url('../images/logo.png') center top no-repeat;
-	font-family:sans;
+	font-family: 'Open Sans', sans-serif;
 	margin-top:60px;
+    font-size:16px;
 	
 }
 
@@ -30,7 +31,7 @@ form
 	width:25%;
 	background:#fbfbfb;
 	border-radius:15px;
-	font-size:14px;
+	font-size:16px;
 	color:#676767;
 	-webkit-box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 0.25);
 	-moz-box-shadow:    0px 1px 2px 0px rgba(50, 50, 50, 0.25);
@@ -55,6 +56,30 @@ input[type="text"], input[type="password"]
 	border: solid #cbcbcb 1px;
 	
 }
+
+.submit {
+
+  width:250px;
+  display: block;
+  margin: 0 auto 18px auto;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #FF7052;
+  color: #FF7052;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 7px #fff;
+  transition: 0.2s ease-out;
+  position:relative;
+}
+
+.submit:hover,
+.submit:focus {
+  background: #FF7052;
+  color: #fff;
+  outline: 0;
+}
+
 
 .expire_button
 {
