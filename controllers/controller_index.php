@@ -261,12 +261,17 @@ class indexController extends Controller {
 
 				$func_admin=$module_admin[$module_id].'Admin';
 				
+				if($module_id!='none')
+				{
+                    $title_admin=$name_modules[$module_id];
+				}
+				
 				if(function_exists($func_admin))
 				{	
 
 					//echo '<h1>'.I18n::$lang[$module_admin[$module_id].'_admin'][$module_admin[$module_id].'_admin_name'].'</h1>';
                     
-                    $title_admin=$name_modules[$module_id];
+                    
                     
                     echo '<h1>'.$title_admin.'</h1>';
                     
