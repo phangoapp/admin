@@ -1,9 +1,4 @@
 <?php
-/*
-load_libraries(array('login'));
-load_model('admin');
-load_config('admin');
-*/
 
 use PhangoApp\PhaRouter\Controller;
 use PhangoApp\PhaModels\Webmodel;
@@ -17,9 +12,6 @@ use PhangoApp\PhaView\View;
 I18n::load_lang('phangoapp/admin');
 Webmodel::load_model('vendor/phangoapp/admin/models/models_admin');
 Utils::load_config('config_admin', 'settings/admin');
-
-#Utils::load_libraries('loginclass');
-#Utils::load_libraries(array('utilities/set_admin_link'));
 
 class indexController extends Controller {
 
