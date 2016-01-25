@@ -23,7 +23,7 @@ class indexController extends Controller {
         if($submodule_id!='')
         {
         
-            $module_id=$module_id.'/'.basename(Utils::slugify($submodule_id));
+            $module_id=basename(Utils::slugify($module_id)).'/'.basename(Utils::slugify($submodule_id));
         
         }
         
@@ -85,14 +85,16 @@ class indexController extends Controller {
 			
 			$title_admin=I18n::lang('admin', 'admin', 'Admin');
 			
-			foreach(ModuleAdmin::$arr_modules_admin as $idmodule => $ser_admin_script)
+			foreach(ModuleAdmin::$arr_modules_admin as $ser_admin_script)
 			{	
 				
 				//load little file lang with the name for admin. With this you don't need bloated with biggest files of langs...
 				
+				$idmodule=$ser_admin_script[0];
+				
 				$name_module=$idmodule;
 				
-				if(gettype(current($ser_admin_script))=='string')
+				if(gettype($ser_admin_script[1])=='string')
                 {
                 
                     $name_modules[$name_module]=$ser_admin_script[2];
@@ -108,13 +110,15 @@ class indexController extends Controller {
 				}
 				else
 				{
+                    
+                    $name_modules[$name_module]=$ser_admin_script[2];
 				
-                    $name_modules[$name_module]=$ser_admin_script['title'];
+                    //unset(ModuleAdmin::$arr_modules_admin[$idmodule]['title']);
 				
-                    unset(ModuleAdmin::$arr_modules_admin[$idmodule]['title']);
-				
-                    foreach(ModuleAdmin::$arr_modules_admin[$idmodule] as $idmodule_son => $ser_admin_script_son)
+                    foreach($ser_admin_script[1] as $ser_admin_script_son)
                     {
+                    
+                        $idmodule_son=$ser_admin_script_son[0];
                     
                         $name_module_son=$idmodule_son;
 				
