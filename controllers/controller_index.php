@@ -17,8 +17,15 @@ class indexController extends Controller {
 
 	static public $login;
 
-	public function home($module_id='none')
+	public function home($module_id='none', $submodule_id='')
 	{
+        
+        if($submodule_id!='')
+        {
+        
+            $module_id=$module_id.'/'.basename(Utils::slugify($submodule_id));
+        
+        }
         
 		class_alias('indexController', 'AdminSwitchClass');
 		
@@ -233,7 +240,17 @@ class indexController extends Controller {
 		
 			ob_end_clean();
 			
-			echo View::load_view(array('header' => $header, 'title' => I18n::lang('admin', 'admin_zone', 'Admin zone'), 'content' => $content, 'name_modules' => $name_modules, 'urls' => $urls , 'extra_data' => $extra_data), 'admin/admin');
+			if(AdminUtils::$show_admin_view==true)
+			{
+                echo View::load_view(array('header' => $header, 'title' => I18n::lang('admin', 'admin_zone', 'Admin zone'),     'content' => $content, 'name_modules' => $name_modules, 'urls' => $urls , 'extra_data' => $extra_data), 'admin/admin');
+                
+            }
+            else
+            {
+            
+                echo $content;
+            
+            }
 
 		}
 		else

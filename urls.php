@@ -12,8 +12,12 @@ Routes::$urls[ADMIN_FOLDER.'\/login\/recovery']=array('login', 'recovery');
 
 Routes::$urls[ADMIN_FOLDER.'\/login\/check']=array('login', 'login');
 
+Routes::$urls[ADMIN_FOLDER.'\/login\/logout']=array('login', 'logout');
+
 Routes::$urls[ADMIN_FOLDER.'\/login']=array('login', 'home');
 
 Routes::$urls[ADMIN_FOLDER.'\/(\w+)']=array('index', 'home');
+
+Routes::$urls[ADMIN_FOLDER.'\/(\w+)\/(\w+)']=array('index', 'home');
 
 ?>
