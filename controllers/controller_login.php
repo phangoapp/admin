@@ -25,13 +25,15 @@ class LoginController extends Controller {
 	
 		$this->login->field_name='email';
 	
-		$this->login->url_login=Routes::make_url('login', 'login');//make_fancy_url(PhangoVar::$base_url, 'admin', 'login_check', array());
+        //make_simple_url($url_path, $values=array(), $get=array())
+	
+		$this->login->url_login=Routes::make_simple_url(ADMIN_FOLDER.'/login/check');//make_fancy_url(PhangoVar::$base_url, 'admin', 'login_check', array());
 		
-		$this->login->url_insert=Routes::make_url('login', 'register');//make_fancy_url(PhangoVar::$base_url, 'admin', 'register_insert', array(1));
+		$this->login->url_insert=Routes::make_simple_url(ADMIN_FOLDER.'/login/register');//make_fancy_url(PhangoVar::$base_url, 'admin', 'register_insert', array(1));
 		
-		$this->login->url_recovery=Routes::make_url('login', 'recovery');//make_fancy_url(PhangoVar::$base_url, 'admin', 'recovery_password', array(1));
+		$this->login->url_recovery=Routes::make_simple_url(ADMIN_FOLDER.'/login/recovery');//make_fancy_url(PhangoVar::$base_url, 'admin', 'recovery_password', array(1));
 		
-		$this->login->url_recovery_send=Routes::make_url('login', 'recovery_send'); //make_fancy_url(PhangoVar::$base_url, 'admin', 'recovery_password_send', array(1));
+		$this->login->url_recovery_send=Routes::make_simple_url(ADMIN_FOLDER.'/login/recovery_send'); //make_fancy_url(PhangoVar::$base_url, 'admin', 'recovery_password_send', array(1));
 		
 		$this->login->accept_conditions=0;
 		
@@ -71,7 +73,7 @@ class LoginController extends Controller {
 		else
 		{
 			
-			$url_return=Routes::make_url('login', 'register');
+			$url_return=Routes::make_simple_url(ADMIN_FOLDER.'/login/register');
 			
 			Routes::redirect($url_return);
 		
@@ -103,7 +105,7 @@ class LoginController extends Controller {
 		else
 		{
 			
-			$url_return=Routes::make_url('index');
+			$url_return=Routes::make_simple_url(ADMIN_FOLDER);
 			
 			Routes::redirect($url_return);
 		
@@ -175,7 +177,7 @@ class LoginController extends Controller {
 				{
 					View::set_flash(I18n::lang('admin', 'user_added_success', 'The user was added successfully'));
 					
-					$url_return=Routes::make_url('login');
+					$url_return=Routes::make_simple_url(ADMIN_FOLDER.'/login');
 			
 					Routes::redirect($url_return);
 				
@@ -210,7 +212,7 @@ class LoginController extends Controller {
 		
 		ob_end_clean();
 		
-		Routes::redirect( Routes::make_url('login') );
+		Routes::redirect( Routes::make_simple_url(ADMIN_FOLDER.'/login') );
 	
 	}
 	

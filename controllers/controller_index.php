@@ -82,11 +82,6 @@ class indexController extends Controller {
 			{	
 				
 				//load little file lang with the name for admin. With this you don't need bloated with biggest files of langs...
-
-				/*
-				ModuleAdmin::$arr_modules_admin=[array('ausers' => array('phangoapp/admin', 'ausers')), 'AUsers'];
-                ModuleAdmin::$arr_modules_admin['server_config']=['example1' => array('example/example', 'example1', 'examplete1'), 'example2' => array('example/example', 'example2', 'examplete2')]
-				*/
 				
 				$name_module=$idmodule;
 				
@@ -129,72 +124,6 @@ class indexController extends Controller {
                     }
 				
 				}
-				
-				/*
-				$dir_lang_admin=$name_module.'/';
-				
-				I18n::load_lang($dir_lang_admin.$name_module.'_admin');
-                
-                if(!isset(I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']))
-                {
-
-                    $name_modules[$name_module]=ucfirst($name_module);
-                    I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']=ucfirst($name_modules[$name_module]);
-                
-                }
-                else
-                {
-                    
-                    $name_modules[$name_module]=ucfirst(I18n::$lang[$name_module.'_admin'][$name_module.'_admin_name']);
-
-                }*/
-                /*
-                $name_modules[$name_module]=$ser_admin_script[2];
-				
-				if(gettype(current($ser_admin_script))=='string')
-				{
-                    
-                    $arr_admin_script[$idmodule]=$ser_admin_script;                   
-
-                    if($arr_admin_script[$idmodule][0]!=$arr_admin_script[$idmodule][1])
-                    {
-
-                        $dir_lang_admin=$arr_admin_script[$idmodule][0].'/';
-
-                    }
-
-                    $urls[$name_module]=AdminUtils::set_admin_link($idmodule, array()); //(PhangoVar::$base_url, 'admin', 'index', $name_module, array('IdModule' => $idmodule));
-
-                    $module_admin[$idmodule]=$name_module;
-                    
-                    $arr_permissions_admin[$idmodule]=1;
-			
-                }
-                else
-                {
-                    
-                    
-                    foreach($ser_admin_script as $idmodule_son => $ser_admin_script_son)
-                    {
-                    
-                        $name_module_son=$idmodule_son;
-                        
-                        $arr_son_module['extra_url'][$idmodule]['name_module'][]=$ser_admin_script_son[2];
-                        
-                        $arr_son_module['extra_url'][$idmodule]['url_module'][]=AdminUtils::set_admin_link($name_module_son, array());
-                    
-                        $arr_admin_script[$idmodule_son]=$ser_admin_script_son;
-                        $module_admin[$idmodule_son]=$name_module_son;
-                        $arr_permissions_admin[$idmodule_son]=1;
-                        
-                        //$module_admin[$module_id]!='' && $arr_permissions_admin[$module_id]==1)
-                    
-                    }
-                    
-                                       
-                    //foreach($ser_admin_script as 
-                
-                }*/
 			
 			}
 
@@ -260,10 +189,6 @@ class indexController extends Controller {
 				
 				if(function_exists($func_admin))
 				{	
-
-					//echo '<h1>'.I18n::$lang[$module_admin[$module_id].'_admin'][$module_admin[$module_id].'_admin_name'].'</h1>';
-                    
-                    
                     
                     echo '<h1>'.$title_admin.'</h1>';
                     
@@ -314,7 +239,7 @@ class indexController extends Controller {
 		else
 		{	
 			
-			$url=Routes::make_url('login');
+			$url=Routes::make_simple_url(ADMIN_FOLDER.'/login/check');;
 			
 			die( header('Location: '.$url, true ) );
 			
