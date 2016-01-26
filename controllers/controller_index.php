@@ -83,6 +83,8 @@ class indexController extends Controller {
 			
 			//I18n::$lang[$module_admin[$module_id].'_admin']['AdminIndex_admin_name']=ucfirst(I18n::lang('admin', 'admin', 'Admin'));
 			
+			//0=> name in uri, 1 => route to script, 2 name of script
+			
 			$title_admin=I18n::lang('admin', 'admin', 'Admin');
 			
 			foreach(ModuleAdmin::$arr_modules_admin as $ser_admin_script)
@@ -148,7 +150,7 @@ class indexController extends Controller {
 			
 			}
 			
-			$file_include=Routes::$base_path.'/vendor/'.$arr_admin_script[ $module_id ][0].'/controllers/admin/admin_'.$arr_admin_script[ $module_id ][1].'.php';
+			$file_include=Routes::$base_path.'/vendor/'.$arr_admin_script[ $module_id ][1].'/controllers/admin/admin_'.basename($arr_admin_script[ $module_id ][0]).'.php';
 			
 			if(LoginClass::$session['user_admin']['privileges_user']==1)
 			{
@@ -191,7 +193,7 @@ class indexController extends Controller {
 				
 				include($file_include);
 
-				$func_admin=$module_admin[$module_id].'Admin';
+				$func_admin=basename($module_admin[$module_id]).'Admin';
 				
 				if($module_id!='none')
 				{
