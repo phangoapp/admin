@@ -262,7 +262,7 @@ class indexController extends Controller {
 		else
 		{	
 			
-			$url=Routes::make_simple_url(ADMIN_FOLDER.'/login/check');;
+			$url=Routes::make_simple_url(ADMIN_FOLDER.'/login');
 			
 			die( header('Location: '.$url, true ) );
 			
