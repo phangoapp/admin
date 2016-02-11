@@ -75,7 +75,7 @@ class indexController extends Controller {
 
 			$module_admin=array();
 
-			$arr_admin_script['none']=array('phangoapp/admin', 'admin');
+			$arr_admin_script['none']=array('admin', 'phangoapp/admin');
 			
 			//Define $module_admin[$module_id] for check if exists in database the module
 
