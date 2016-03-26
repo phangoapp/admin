@@ -162,9 +162,11 @@ class indexController extends Controller {
 				$arr_permissions_admin[$module_id]=0;
 				$arr_permissions_admin['none']=1;
 			
-				$query=Webmodel::$model['moderators_module']->select('where moderator='.$_SESSION['IdUser_admin'], array('idmodule'), 1);
+                Webmodel::$model['moderators_module']->set_conditions(['where moderator=?', [$_SESSION['IdUser_admin']]]);
+            
+				$query=Webmodel::$model['moderators_module']->select(array('idmodule'), 1);
 				
-				while(list($idmodule_mod)=$model['moderators_module']->fetch_row($query))
+				while(list($idmodule_mod)=Webmodel::$model['moderators_module']->fetch_row($query))
 				{
 				
 					//settype($idmodule_mod, 'integer');
