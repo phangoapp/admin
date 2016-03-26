@@ -24,7 +24,7 @@ function LoginAdminView($content)
 	<body>
 		<div id="logo_phango"></div>
 		<div id="login_block">
-			<?php echo $content;|n ?>
+			<?php echo $content; ?>
 		</div>
 	</body>
 </html>

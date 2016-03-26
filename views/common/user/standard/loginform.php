@@ -20,7 +20,7 @@ function LoginFormView($model_user, $model_login)
 	$model_user->forms['no_expire_session']->label_class='expire_button';*/
 	
 	?>
-	<?php echo View::show_flash();|n ?>
+	<?php echo View::show_flash(); ?>
 	<form method="post" action="<?php echo $model_login->url_login; ?>">
 	<?php
 		Utils::set_csrf_key();
