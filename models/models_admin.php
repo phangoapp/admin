@@ -15,7 +15,7 @@ use PhangoApp\PhaModels\CoreFields\ForeignKeyField;
 use PhangoApp\PhaModels\ExtraModels\UserPhangoModel;
 use PhangoApp\PhaI18n\I18n;
 
-I18n::load_lang('phangoapp/admin');
+//I18n::load_lang('phangoapp/admin');
 
 class ChoiceAdminField extends ChoiceField {
 
@@ -49,6 +49,8 @@ Webmodel::$model['user_admin']->register('privileges_user', new ChoiceAdminField
 Webmodel::$model['user_admin']->register('token_client', new CharField(255));
 
 Webmodel::$model['user_admin']->register('token_recovery', new CharField(255));
+
+Webmodel::$model['user_admin']->register('lang', new ChoiceField(11, 'string', I18n::$arr_i18n), 0);
 
 Webmodel::$model['user_admin']->username='email';
 

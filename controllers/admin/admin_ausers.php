@@ -51,7 +51,7 @@ function AusersAdmin()
 			$admin->list->arr_fields_search=['IdUser_admin', 'user_admin'];
 			$admin->list->default_field_search='user_admin';
 			
-			$admin->arr_fields_edit=array('user_admin', 'password', 'repeat_password', 'email', 'privileges_user');
+			$admin->arr_fields_edit=array('user_admin', 'password', 'repeat_password', 'email', 'privileges_user', 'lang');
 			
 			//$admin->set_url_post(set_admin_link('ausers', array('op' => 0)));
 			

@@ -9,9 +9,7 @@ use PhangoApp\PhaLibs\LoginClass;
 use PhangoApp\PhaRouter\Routes;
 use PhangoApp\PhaView\View;
 
-I18n::load_lang('phangoapp/admin');
 Webmodel::load_model('vendor/phangoapp/admin/models/models_admin');
-Utils::load_config('config_admin', 'settings/admin');
 
 class indexController extends Controller {
 
@@ -29,8 +27,8 @@ class indexController extends Controller {
         
 		class_alias('indexController', 'AdminSwitchClass');
 		
-		AdminSwitchClass::$login=new LoginClass(Webmodel::$model['user_admin'], 'username', 'password', '', $arr_user_session=array('IdUser_admin', 'privileges_user', 'username', 'token_client'), $arr_user_insert=array('username', 'password', 'repeat_password', 'email'));
-		
+		AdminSwitchClass::$login=new LoginClass(Webmodel::$model['user_admin'], 'username', 'password', '', $arr_user_session=array('IdUser_admin', 'privileges_user', 'username', 'token_client', 'lang'), $arr_user_insert=array('username', 'password', 'repeat_password', 'email'));
+        
 		AdminSwitchClass::$login->field_key='token_client';
 		
 		ob_start();
@@ -40,7 +38,6 @@ class indexController extends Controller {
 		$header='';
 		$content='';
 		
-		I18n::load_lang('admin');
 		//load_libraries(array('utilities/set_admin_link'));
 
 		//settype($module_id, 'string');
@@ -56,7 +53,12 @@ class indexController extends Controller {
 		{
             
 			LoginClass::$session['user_admin']['token_client']=sha1(LoginClass::$session['user_admin']['token_client']);
-			
+            
+            $_SESSION['language']=LoginClass::$session['user_admin']['lang'];
+            
+            Utils::load_config('config_admin', 'settings/admin');
+			I18n::load_lang('phangoapp/admin');
+            
 			//variables for define titles for admin page
 
 			$arr_son_module=array();
