@@ -57,7 +57,6 @@ class indexController extends Controller {
             $_SESSION['language']=LoginClass::$session['user_admin']['lang'];
             
             Utils::load_config('config_admin', 'settings/admin');
-			I18n::load_lang('phangoapp/admin');
             
 			//variables for define titles for admin page
 
@@ -77,7 +76,7 @@ class indexController extends Controller {
 
 			$module_admin=array();
 
-			$arr_admin_script['none']=array('admin', 'phangoapp/admin');
+			$arr_admin_script['none']=AdminUtils::$admin_controller;
 			
 			//Define $module_admin[$module_id] for check if exists in database the module
 
@@ -87,7 +86,7 @@ class indexController extends Controller {
 			
 			//0=> name in uri, 1 => route to script, 2 name of script
 			
-			$title_admin=I18n::lang('admin', 'admin', 'Admin');
+			$title_admin=AdminUtils::$name_admin;
 			
 			foreach(ModuleAdmin::$arr_modules_admin as $ser_admin_script)
 			{	
@@ -152,7 +151,9 @@ class indexController extends Controller {
 			
 			}
 			
-			$file_include=Routes::$base_path.'/vendor/'.$arr_admin_script[ $module_id ][1].'/controllers/admin/admin_'.basename($arr_admin_script[ $module_id ][0]).'.php';
+			//$file_include=Routes::$base_path.'/vendor/'.$arr_admin_script[ $module_id ][1].'/controllers/admin/admin_'.basename($arr_admin_script[ $module_id ][0]).'.php';
+            
+            $file_include=Routes::$base_path.'/'.$arr_admin_script[ $module_id ][1].'.php';
 			
 			if(LoginClass::$session['user_admin']['privileges_user']==1)
 			{
