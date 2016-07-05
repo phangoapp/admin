@@ -208,8 +208,6 @@ class indexController extends Controller {
 				if(function_exists($func_admin))
 				{	
                     
-                    echo '<h1>'.$title_admin.'</h1>';
-                    
 					$extra_data=$func_admin();
 					
 					settype($extra_data, 'array');
@@ -253,6 +251,9 @@ class indexController extends Controller {
 			
 			if(AdminUtils::$show_admin_view==true)
 			{
+                
+                $content='<h1>'.$title_admin."</h1>\n".$content;
+                
                 echo View::load_view(array('header' => $header, 'title' => I18n::lang('admin', 'admin_zone', 'Admin zone'),     'content' => $content, 'name_modules' => $name_modules, 'urls' => $urls , 'extra_data' => $extra_data), 'admin/admin');
                 
             }
