@@ -18,6 +18,8 @@ class indexController extends Controller {
 	public function home($module_id='none', $submodule_id='')
 	{
         
+        I18n::load_lang('phangoapp/admin');
+        
         if($submodule_id!='')
         {
         
@@ -277,7 +279,7 @@ class indexController extends Controller {
 	}
 	
 }
-
+/*
 function get_admin_modules($arr_admin_script, $name_modules, $urls, $module_admin, $arr_permissions_admin)
 {
 
@@ -318,6 +320,6 @@ function get_admin_modules($arr_admin_script, $name_modules, $urls, $module_admi
     
     return [$arr_admin_script, $name_modules, $urls, $module_admin, $arr_permissions_admin];
 
-}
+}*/
 
 ?>
