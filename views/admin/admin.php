@@ -26,6 +26,7 @@ function AdminView($header, $title, $content, $name_modules, $url_modules, $extr
     <?php echo View::load_css(); ?>
     <?php echo View::load_js(); ?>
     <?php echo View::load_header(); ?> 
+    </head>
     <body>
     <div id="logout">
     <a href="${make_url('admin/logout')}"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
@@ -111,7 +112,6 @@ function AdminView($header, $title, $content, $name_modules, $url_modules, $extr
     <script>
         var navigation = responsiveNav(".nav-collapse", {customToggle: "#toggle"});
     </script>
-    </head>
     </body>
     </html>
 
