@@ -5,7 +5,7 @@ use PhangoApp\PhaView\View;
 use PhangoApp\PhaI18n\I18n;
 use PhangoApp\PhaRouter\Routes;
 
-function AdminView($header, $title, $content, $name_modules, $url_modules, $extra_data)
+function AdminView($header, $title, $content, $name_modules, $url_modules, $extra_data, $no_show_menu)
 {
 
 	View::$js[]='jquery.min.js';
@@ -67,21 +67,25 @@ function AdminView($header, $title, $content, $name_modules, $url_modules, $extr
 
 					foreach($name_modules as $key_module => $name_module)
 					{
-                        if(isset($url_modules[$key_module]))
+                        
+                        if(!isset($no_show_menu[$key_module]))
                         {
-					
-						?>
-						<li><a href="<?php echo $url_modules[$key_module]; ?>"><i class="fa fa-circle-o" aria-hidden="true"></i> <?php echo $name_module; ?></a></li>
-						<?php
-						
+                        
+                            if(isset($url_modules[$key_module]))
+                            {
+                        
+                            ?>
+                            <li><a href="<?php echo $url_modules[$key_module]; ?>"><i class="fa fa-circle-o" aria-hidden="true"></i> <?php echo $name_module; ?></a></li>
+                            <?php
+                            
+                            }
+                            else
+                            {
+                            
+                                echo '<li><div class="father_admin">'.$name_module.'</div></li>'; 
+                            
+                            }
 						}
-						else
-						{
-						
-                            echo '<li><div class="father_admin">'.$name_module.'</div></li>'; 
-						
-						}
-						
 						//If have $key_module with an extra_url element from extra_data, put here.
 						
 						if(isset($extra_data['extra_url'][$key_module]))

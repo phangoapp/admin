@@ -70,6 +70,8 @@ class indexController extends Controller {
 			$content='';
 
 			$name_modules=array();
+            
+            $no_show_menu=[];
 
 			$urls=array();
 			
@@ -111,6 +113,13 @@ class indexController extends Controller {
                     $module_admin[$idmodule]=$name_module;
                     
                     $arr_permissions_admin[$idmodule]=1;
+                    
+                    if(isset($ser_admin_script[3]))
+                    {
+                        
+                        $no_show_menu[$name_module]=1;
+                        
+                    }
 				
 				}
 				else
@@ -136,13 +145,20 @@ class indexController extends Controller {
                         $module_admin[$idmodule_son]=$name_module_son;
                         
                         $arr_permissions_admin[$idmodule_son]=1;
+                        
+                        if(isset($ser_admin_script_son[3]))
+                        {
+                            
+                            $no_show_menu[$name_module_son]=1;
+                        
+                        }
 				
                     }
 				
 				}
 			
 			}
-
+            
 			if(!isset($arr_admin_script[ $module_id ]))
 			{
 			
@@ -256,7 +272,7 @@ class indexController extends Controller {
                 
                 $content='<h1>'.$title_admin."</h1>\n".$content;
                 
-                echo View::load_view(array('header' => $header, 'title' => I18n::lang('admin', 'admin_zone', 'Admin zone'),     'content' => $content, 'name_modules' => $name_modules, 'urls' => $urls , 'extra_data' => $extra_data), 'admin/admin');
+                echo View::load_view(array('header' => $header, 'title' => I18n::lang('admin', 'admin_zone', 'Admin zone'),     'content' => $content, 'name_modules' => $name_modules, 'urls' => $urls , 'extra_data' => $extra_data, 'no_show_menu' => $no_show_menu), 'admin/admin');
                 
             }
             else
