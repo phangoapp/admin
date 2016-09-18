@@ -74,7 +74,7 @@ function AusersAdmin()
 			if($arr_user['IdUser_admin']>0)
 			{
 			
-                $title=I18n::lang('admin', 'add_moderator_to_module', 'Add moderator to module').': <strong>'.$arr_user['user_admin'].'</strong>';
+                $title=I18n::lang('phangoapp/admin', 'add_moderator_to_module', 'Add moderator to module').': <strong>'.$arr_user['user_admin'].'</strong>';
 			
 				echo '<h3>'.$title.'</h3>';
 				
@@ -97,12 +97,12 @@ function AusersAdmin()
                 
                 Webmodel::$model['moderators_module']->components['idmodule']->arr_values=$arr_mod;
                 Webmodel::$model['moderators_module']->forms['idmodule']->arr_select=$arr_mod;
-                Webmodel::$model['moderators_module']->forms['idmodule']->label=I18n::lang('admin', 'module_moderated', 'Module moderated');
+                Webmodel::$model['moderators_module']->forms['idmodule']->label=I18n::lang('phangoapp/admin', 'module_moderated', 'Module moderated');
                 
                 $action=AdminUtils::set_admin_link('ausers', array('op' => 1, 'IdUser_admin' => $arr_user['IdUser_admin']));
                 $home=AdminUtils::set_admin_link('ausers', array());
                 
-                $arr_hierarchy['']=array($home  => I18n::lang('admin', 'moderators', 'Moderators'));
+                $arr_hierarchy['']=array($home  => I18n::lang('phangoapp/admin', 'moderators', 'Moderators'));
                 $arr_hierarchy[$home]=array( $action =>  $title);
                 
                 $hierarchy=new HierarchyLinks($arr_hierarchy);
@@ -132,7 +132,7 @@ function AusersAdmin()
 				Webmodel::$model['moderators_module']->forms['moderator']->form='HiddenForm';
 				Webmodel::$model['moderators_module']->forms['moderator']->set_param_value_form($arr_user['IdUser_admin']);
 				
-				Webmodel::$model['moderators_module']->forms['moderator']->label=I18n::lang('admin', 'moderator', 'Moderator');
+				Webmodel::$model['moderators_module']->forms['moderator']->label=I18n::lang('phangoapp/admin', 'moderator', 'Moderator');
 				
 				//Webmodel::$model['moderators_module']->forms['idmodule']->form='SelectForm';
 				
@@ -170,7 +170,7 @@ function AusersAdmin()
 			
 				//generate_admin_model_ng('moderators_module', $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='where idmodule='.$_GET['idmodule'], $arr_fields_form=array(), $type_list='Basic');
 				
-				echo '<p><a href="'.AdminUtils::set_admin_link('ausers', array()).'">'.I18n::lang('admin', 'go_back_home', 'go back to home').'</a></p>';
+				echo '<p><a href="'.AdminUtils::set_admin_link('ausers', array()).'">'.I18n::lang('phangoapp/admin', 'go_back_home', 'go back to home').'</a></p>';
 				*/
 				
 			}
@@ -189,7 +189,7 @@ function UserOptionsListModel($url_options, $model_name, $id, $arr_row)
 	if($arr_row['privileges_user']==1)
 	{
 		
-		$arr_options[]='<a href="'.AdminUtils::set_admin_link('ausers', array('op' => 1, 'IdUser_admin' => $id)).'">'.I18n::lang('admin', 'change_user_modules', 'Change user modules').'</a>';
+		$arr_options[]='<a href="'.AdminUtils::set_admin_link('ausers', array('op' => 1, 'IdUser_admin' => $id)).'">'.I18n::lang('phangoapp/admin', 'change_user_modules', 'Change user modules').'</a>';
 	
 	}
 	

@@ -32,9 +32,9 @@ class ChoiceAdminField extends ChoiceField {
 
 }
 
-ChoiceAdminField::$arr_options_formated=array(0 => I18n::lang('admin', 'administrator', 'Administrator'), 1 => I18n::lang('admin', 'moderator', 'Moderator'));
+ChoiceAdminField::$arr_options_formated=array(0 => I18n::lang('phangoapp/admin', 'administrator', 'Administrator'), 1 => I18n::lang('phangoapp/admin', 'moderator', 'Moderator'));
 
-ChoiceAdminField::$arr_options_select=array(0 => I18n::lang('admin', 'administrator', 'Administrator'), 1 => I18n::lang('admin', 'moderator', 'Moderator'));
+ChoiceAdminField::$arr_options_select=array(0 => I18n::lang('phangoapp/admin', 'administrator', 'Administrator'), 1 => I18n::lang('phangoapp/admin', 'moderator', 'Moderator'));
 
 Webmodel::$model['user_admin']=new UserPhangoModel('user_admin');
 

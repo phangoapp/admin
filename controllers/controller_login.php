@@ -175,7 +175,7 @@ class LoginController extends Controller {
 			
 				if($this->login->create_account())
 				{
-					View::set_flash(I18n::lang('admin', 'user_added_success', 'The user was added successfully'));
+					View::set_flash(I18n::lang('phangoapp/admin', 'user_added_success', 'The user was added successfully'));
 					
 					$url_return=Routes::make_simple_url(ADMIN_FOLDER.'/login');
 			

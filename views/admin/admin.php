@@ -62,7 +62,7 @@ function AdminView($header, $title, $content, $name_modules, $url_modules, $extr
         <div class="content_admin">
             <nav id="menu" class="nav-collapse">
                 <ul>
-                    <li class="menu_title"><i class="fa fa-gear" aria-hidden="true"></i> <?php echo I18n::lang('admin', 'applications', 'Applications'); ?></li>
+                    <li class="menu_title"><i class="fa fa-gear" aria-hidden="true"></i> <?php echo I18n::lang('phangoapp/admin', 'applications', 'Applications'); ?></li>
                     <?php
 
 					foreach($name_modules as $key_module => $name_module)

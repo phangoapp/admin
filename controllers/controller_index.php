@@ -64,8 +64,8 @@ class indexController extends Controller {
 
 			$arr_son_module=array();
 			
-			$title_admin=I18n::lang('admin', 'admin', 'Admin');
-			$title_module=I18n::lang('admin', 'home', 'Home');
+			$title_admin=I18n::lang('phangoapp/admin', 'admin', 'Admin');
+			$title_module=I18n::lang('phangoapp/admin', 'home', 'Home');
 			
 			$content='';
 
@@ -86,7 +86,7 @@ class indexController extends Controller {
 
 			$module_admin[$module_id]='AdminIndex';
 			
-			//I18n::$lang[$module_admin[$module_id].'_admin']['AdminIndex_admin_name']=ucfirst(I18n::lang('admin', 'admin', 'Admin'));
+			//I18n::$lang[$module_admin[$module_id].'_admin']['AdminIndex_admin_name']=ucfirst(I18n::lang('phangoapp/admin', 'admin', 'Admin'));
 			
 			//0=> name in uri, 1 => route to script, 2 name of script
 			
@@ -272,7 +272,7 @@ class indexController extends Controller {
                 
                 $content='<h1>'.$title_admin."</h1>\n".$content;
                 
-                echo View::load_view(array('header' => $header, 'title' => I18n::lang('admin', 'admin_zone', 'Admin zone'),     'content' => $content, 'name_modules' => $name_modules, 'urls' => $urls , 'extra_data' => $extra_data, 'no_show_menu' => $no_show_menu), 'admin/admin');
+                echo View::load_view(array('header' => $header, 'title' => I18n::lang('phangoapp/admin', 'admin_zone', 'Admin zone'),     'content' => $content, 'name_modules' => $name_modules, 'urls' => $urls , 'extra_data' => $extra_data, 'no_show_menu' => $no_show_menu), 'admin/admin');
                 
             }
             else
