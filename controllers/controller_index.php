@@ -56,7 +56,12 @@ class indexController extends Controller {
             
 			LoginClass::$session['user_admin']['token_client']=sha1(LoginClass::$session['user_admin']['token_client']);
             
-            $_SESSION['language']=LoginClass::$session['user_admin']['lang'];
+            if(!isset($_SESSION['language']))
+            {
+            
+                $_SESSION['language']=LoginClass::$session['user_admin']['lang'];
+                
+            }
             
             Utils::load_config('config_admin', 'settings/admin');
             
