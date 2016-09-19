@@ -8,9 +8,9 @@ I18n::$lang['phangoapp/admin']['welcome_text']='Desde aquí podrá manejar su we
 
 I18n::$lang['phangoapp/admin']['add_moderator_to_module']='Añadir moderador a módulo';
 
-I18n::$lang['phangoapp/admin']['module_moderated']='Module moderated';
+I18n::$lang['phangoapp/admin']['module_moderated']='Modulo moderado';
 
-I18n::$lang['phangoapp/admin']['moderators']='Moderators';
+I18n::$lang['phangoapp/admin']['moderators']='Moderadores';
 
 I18n::$lang['phangoapp/admin']['moderator']='Moderador';
 
