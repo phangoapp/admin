@@ -4,6 +4,7 @@ use PhangoApp\PhaUtils\Utils;
 use PhangoApp\PhaView\View;
 use PhangoApp\PhaI18n\I18n;
 use PhangoApp\PhaRouter\Routes;
+use PhangoApp\PhaLibs\AdminUtils;
 
 function AdminView($header, $title, $content, $name_modules, $url_modules, $extra_data, $no_show_menu)
 {
@@ -29,7 +30,7 @@ function AdminView($header, $title, $content, $name_modules, $url_modules, $extr
     </head>
     <body>
     <div id="logout">
-    <a href="${make_url('admin/logout')}"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
+    <a href="<?php echo AdminUtils::set_admin_link('login/logout'); ?>"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
     </div>
 
     <div id="center_body">

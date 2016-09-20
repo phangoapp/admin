@@ -18,8 +18,6 @@ class indexController extends Controller {
 	public function home($module_id='none', $submodule_id='')
 	{
         
-        I18n::load_lang('phangoapp/admin');
-        
         if($submodule_id!='')
         {
         
@@ -62,6 +60,8 @@ class indexController extends Controller {
                 $_SESSION['language']=LoginClass::$session['user_admin']['lang'];
                 
             }
+            
+            I18n::load_lang('phangoapp/admin');
             
             Utils::load_config('config_admin', 'settings/admin');
             
