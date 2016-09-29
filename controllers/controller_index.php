@@ -27,7 +27,7 @@ class indexController extends Controller {
         
 		class_alias('indexController', 'AdminSwitchClass');
 		
-		AdminSwitchClass::$login=new LoginClass(Webmodel::$model['user_admin'], 'username', 'password', '', $arr_user_session=array('IdUser_admin', 'privileges_user', 'username', 'token_client', 'lang'), $arr_user_insert=array('username', 'password', 'repeat_password', 'email'));
+		AdminSwitchClass::$login=new LoginClass(Webmodel::$model['user_admin'], 'user_admin', 'password', '', $arr_user_session=array('IdUser_admin', 'privileges_user', 'username', 'token_client', 'lang'), $arr_user_insert=array('user_admin', 'password', 'repeat_password', 'email'));
         
 		AdminSwitchClass::$login->field_key='token_client';
 		

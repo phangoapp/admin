@@ -28,6 +28,7 @@ function LoginFormView($model_user, $model_login)
 		echo View::load_view(array($model_user->forms, $arr_fields_login), 'forms/modelform');
 
 	?>
+    <p><?php echo I18n::lang('users', 'remember_login', 'Remember login?'); ?> <input type="checkbox" name="no_expire_session" value="1" /></p>
 	<p><a href="<?php echo $model_login->url_recovery; ?>"><?php echo I18n::lang('users', 'remember_password', 'Remember password'); ?></a></p>
 	<p><input type="submit" class="submit" value="<?php echo I18n::lang('common', 'login', 'Login'); ?>" /></p>
 	</form>
