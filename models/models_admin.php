@@ -38,7 +38,7 @@ ChoiceAdminField::$arr_options_select=array(0 => I18n::lang('phangoapp/admin', '
 
 Webmodel::$model['user_admin']=new UserPhangoModel('user_admin');
 
-Webmodel::$model['user_admin']->register('user_admin', new CharField(25), 1);
+Webmodel::$model['user_admin']->register('user_admin', new CharField(255), 1);
 
 Webmodel::$model['user_admin']->register('password', new PasswordField(255), 1);
 
