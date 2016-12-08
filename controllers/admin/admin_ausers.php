@@ -66,8 +66,10 @@ function AusersAdmin()
 			//Utils::load_libraries(array('forms/selectmodelform'));
 			
 			settype($_GET['IdUser_admin'], 'integer');
+            
+            $iduser_admin=(integer)$_GET['IdUser_admin'];
 			
-			$arr_user=Webmodel::$model['user_admin']->select_a_row($_GET['IdUser_admin'], array('IdUser_admin', 'user_admin'));
+			$arr_user=Webmodel::$model['user_admin']->select_a_row($iduser_admin, array('IdUser_admin', 'user_admin'));
 			
 			settype($arr_user['IdUser_admin'], 'integer');
 			
