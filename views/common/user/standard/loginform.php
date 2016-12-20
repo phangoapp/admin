@@ -23,7 +23,7 @@ function LoginFormView($model_user, $model_login)
 	<?php echo View::show_flash(); ?>
 	<form method="post" action="<?php echo $model_login->url_login; ?>">
 	<?php
-		Utils::set_csrf_key();
+		echo Utils::set_csrf_key();
 		
 		echo View::load_view(array($model_user->forms, $arr_fields_login), 'forms/modelform');
 

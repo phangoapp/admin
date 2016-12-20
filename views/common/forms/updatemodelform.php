@@ -89,7 +89,7 @@ function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $encty
 	?>
 	<form method="post" action="<?php echo $url_post; ?>" name="form" id="form<?php echo $form_html_id; ?>" <?php echo $enctype; ?>>
 	<?php
-	Utils::set_csrf_key();
+	echo Utils::set_csrf_key();
 	
 	$arr_button_tabs=array();
 	
