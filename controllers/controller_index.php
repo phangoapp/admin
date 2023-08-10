@@ -42,8 +42,8 @@ class indexController extends Controller {
 
 		//settype($module_id, 'string');
 		
-		$module_id=Utils::slugify($module_id, 1);
-
+		//$module_id=str_replace('/', '-', $module_id); //Utils::slugify($module_id, 1);
+        
 		$extra_urls=array();
 
 		//Make menu...
@@ -180,7 +180,7 @@ class indexController extends Controller {
 			
 			if(LoginClass::$session['user_admin']['privileges_user']==1)
 			{
-			
+                
 				$arr_permissions_admin=array();
 				$arr_module_saved=array();
 				$arr_module_strip=array();
@@ -277,7 +277,7 @@ class indexController extends Controller {
                 
                 $content='<h1>'.$title_admin."</h1>\n".$content;
                 
-                echo View::load_view(array('header' => $header, 'title' => I18n::lang('phangoapp/admin', 'admin_zone', 'Admin zone'),     'content' => $content, 'name_modules' => $name_modules, 'urls' => $urls , 'extra_data' => $extra_data, 'no_show_menu' => $no_show_menu), 'admin/admin');
+                echo View::load_view(array('header' => $header, 'title' => I18n::lang('phangoapp/admin', 'admin_zone', 'Admin zone'),     'content' => $content, 'name_modules' => $name_modules, 'url_modules' => $urls , 'extra_data' => $extra_data, 'no_show_menu' => $no_show_menu), 'admin/admin');
                 
             }
             else
